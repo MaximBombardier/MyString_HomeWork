@@ -1,5 +1,6 @@
-#include<iostream>
-#include<cstring>
+#include <iostream>
+#include <cstring>
+#include <clocale>
 #include"String_Summa.h"
 
 using namespace std;

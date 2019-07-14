@@ -1,5 +1,7 @@
-#include"String_Summa.h"
-#include<iostream>
+#include <cstring>
+#include <iostream>
+#include "String_Summa.h"
+
 
 MyString::MyString()
 {
@@ -11,7 +13,7 @@ MyString::MyString(const char * str)
 {
 	Lenght = strlen(str);
 	String = new char[Lenght + 1];
-	strcpy_s(String, Lenght, str);
+	strcpy_s(String, Lenght + 1, str);
 
 }
 
@@ -35,8 +37,8 @@ MyString MyString::operator +(const MyString & str)
 	MyString New_string;
 	New_string.Lenght = strlen(str.String + 1);
 	New_string.String = new char[New_string.Lenght + Lenght + 1];
-	strcpy_s(New_string.String, Lenght+1, str.String);
-	strcat_s(New_string.String, New_string.Lenght + 1, str.String);
+	strcpy_s(New_string.String, Lenght + 1, str.String);
+	strcat_s(New_string.String, New_string.Lenght + Lenght + 1, str.String);
 	return New_string;
 }
 
