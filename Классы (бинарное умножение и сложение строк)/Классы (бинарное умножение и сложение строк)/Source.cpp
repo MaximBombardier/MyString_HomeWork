@@ -9,7 +9,7 @@ MyString::MyString()
 	String=NULL;
 }
 
-MyString::MyString(const char * str)
+MyString::MyString(const char* str)
 {
 	Lenght = strlen(str);
 	String = new char[Lenght + 1];
@@ -21,7 +21,7 @@ MyString::MyString(const MyString & str)
 {
 	Lenght = strlen(str.String);
 	String = new char[Lenght + 1];
-	strcpy_s(String, Lenght, str.String);
+	strcpy_s(String, Lenght + 1, str.String);
 }
 
 MyString::MyString(const MyString && str)
@@ -29,54 +29,41 @@ MyString::MyString(const MyString && str)
 	
 	Lenght = strlen(str.String);
 	String = new char[Lenght + 1];
-	strcpy_s(String, Lenght, str.String);
+	strcpy_s(String, Lenght + 1, str.String);
 }
 
 MyString MyString::operator +(const MyString & str)
 {
 	MyString New_string;
-	New_string.Lenght = strlen(str.String + 1);
-	New_string.String = new char[New_string.Lenght + Lenght + 1];
-	strcpy_s(New_string.String, Lenght + 1, str.String);
-	strcat_s(New_string.String, New_string.Lenght + Lenght + 1, str.String);
+	New_string.Lenght = strlen(str.String);
+	New_string.String = new char[str.Lenght + Lenght + 1];
+	strcpy_s(New_string.String, Lenght + 1, String);
+	strcat_s(New_string.String, str.Lenght + Lenght + 1, str.String);
 	return New_string;
 }
 
 MyString&MyString::operator =(const MyString & str)
 {
 	if (this == &str)// предотвращение варианта присваивания самому себе (компилятору не нужно будет угадывать какую строку вы имели в виду, тут вы уже сразу возвращаете значение на на саму строку, если она равна самой себе, т.е. если она одинакова)
-	{
 		return *this;//возвращаем указатель на самого себя
-	}
-
-	if (Lenght != str.Lenght || Lenght == 0)// Если строки разные по длине или равны нулю (строка не сформирована) - нужно удалить строку
-	{
 		delete[]String;
-	}
-
 
 	Lenght = strlen(str.String);
 	String = new char[Lenght + 1];
-	strcpy_s(String, Lenght, str.String);
-
+	strcpy_s(String, Lenght + 1, str.String);
+	return *this;
 }
 
 MyString&MyString::operator =(const MyString && str)
 {
 	if (this == &str)// предотвращение варианта присваивания самому себе (компилятору не нужно будет угадывать какую строку вы имели в виду, тут вы уже сразу возвращаете значение на на саму строку, если она равна самой себе, т.е. если она одинакова)
-	{
 		return *this;//возвращаем указатель на самого себя
-	}
-
-	if (Lenght != str.Lenght || Lenght == 0)// Если строки разные по длине или равны нулю (строка не сформирована) - нужно удалить строку
-	{
-		delete[]String;
-	}
-
+	delete[]String;
 
 	Lenght = strlen(str.String);
 	String = new char[Lenght + 1];
-	strcpy_s(String, Lenght, str.String);
+	strcpy_s(String, Lenght + 1, str.String);
+	return *this;
 }
 
 

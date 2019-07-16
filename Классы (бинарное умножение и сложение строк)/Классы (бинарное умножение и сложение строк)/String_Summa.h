@@ -4,7 +4,7 @@ class MyString
 private:
 
 	char* String;
-	int Lenght;
+	unsigned int Lenght;
 
 public:
 	MyString();//конструктор по умолчанию
@@ -14,7 +14,7 @@ public:
 
 
 	
-	operator char*() { return String; }//перегруженый оператор char* (преобразует в String)
+	operator const char*() { return String; }//перегруженый оператор char* (преобразует в String)
 	MyString operator +(const MyString & str);//перегруженый оператор бинарного сложения (бинарный потому что складывает два операнда, тоесть аргумент слева знака плюс и аргумент справа знака плюс)
 	MyString operator *(const MyString & str);
 	MyString &operator =(const MyString & str);
