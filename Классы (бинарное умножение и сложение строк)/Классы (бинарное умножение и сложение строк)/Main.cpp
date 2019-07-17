@@ -1,5 +1,6 @@
-#include<iostream>
-#include<cstring>
+#include <iostream>
+#include <cstring>
+#include <clocale>
 #include"String_Summa.h"
 
 using namespace std;
@@ -7,11 +8,6 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "ru");
-
-
-
-
-
 	MyString first= "two merry geese" ;
 	MyString second = " lived with granny";
 	MyString concatenation = first + second;
@@ -20,14 +16,6 @@ int main()
 	std::cout << "Second: " << second << std::endl;
 	std::cout << "Concatenation: " << concatenation << std::endl;
 	//std::cout << "Intersection: " << intersection << std::endl;
-	system("pause");
-
-
-
-
-
-
-
 	system("pause");
 	return 0;
 
